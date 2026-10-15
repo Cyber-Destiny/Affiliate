@@ -93,7 +93,11 @@ fun AppRoot(graph: AppGraph) {
     val saveableState = rememberSaveableStateHolder()
     val current = navigator.current
 
-    BackHandler(enabled = navigator.stack.size > 1) { navigator.pop() }
+    // Back steps out of a screen; from Favourites or Settings it goes Home before leaving the app.
+    val backGoesHome = current == Screen.Favourites || current == Screen.Settings
+    BackHandler(enabled = navigator.stack.size > 1 || backGoesHome) {
+        if (navigator.stack.size > 1) navigator.pop() else navigator.reset(Screen.Home)
+    }
 
     CompositionLocalProvider(LocalAppGraph provides graph, LocalMessages provides showMessage) {
         Scaffold(

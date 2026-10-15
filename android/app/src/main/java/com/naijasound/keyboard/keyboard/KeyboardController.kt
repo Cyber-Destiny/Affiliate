@@ -164,7 +164,7 @@ class KeyboardController(
         player.stop()
         selectedId = null
         typing = true
-        if (query.isEmpty()) appliedQuery?.let { setQuery(it) }
+        if (query.isEmpty()) appliedQuery?.let { updateQuery(it) }
     }
 
     fun closeSearch() {
@@ -173,14 +173,14 @@ class KeyboardController(
     }
 
     fun type(text: String) {
-        if (query.length < MAX_QUERY) setQuery(query + text)
+        if (query.length < MAX_QUERY) updateQuery(query + text)
     }
 
     fun backspace() {
-        if (query.isNotEmpty()) setQuery(query.dropLast(1))
+        if (query.isNotEmpty()) updateQuery(query.dropLast(1))
     }
 
-    fun clearQuery() = setQuery("")
+    fun clearQuery() = updateQuery("")
 
     /** The search key: show the results in the big grid. */
     fun submitSearch() {
@@ -192,10 +192,10 @@ class KeyboardController(
 
     fun clearAppliedSearch() {
         appliedQuery = null
-        setQuery("")
+        updateQuery("")
     }
 
-    fun setQuery(text: String) {
+    fun updateQuery(text: String) {
         query = text
         selectedId = null
         searchJob?.cancel()

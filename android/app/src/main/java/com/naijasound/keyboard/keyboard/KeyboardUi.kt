@@ -393,7 +393,7 @@ private fun ColumnScope.TypingMode(c: KeyboardController, preview: PreviewState)
                 verticalAlignment = Alignment.CenterVertically,
                 modifier = Modifier.fillMaxSize(),
             ) {
-                items(SearchIdeas) { idea -> Chip(idea, selected = false, onClick = { c.setQuery(idea) }) }
+                items(SearchIdeas) { idea -> Chip(idea, selected = false, onClick = { c.updateQuery(idea) }) }
             }
             c.results.isEmpty() && c.resultsLoading -> CircularProgressIndicator(Modifier.size(24.dp), strokeWidth = 2.dp)
             c.results.isEmpty() -> Text(
