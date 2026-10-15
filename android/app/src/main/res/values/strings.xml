@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Change the app's name here. -->
+    <string name="app_name">Naija Sound</string>
+    <string name="keyboard_name">Naija Sound keyboard</string>
+    <string name="keyboard_subtype">Naija sounds</string>
+</resources>

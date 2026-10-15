@@ -1,0 +1,6 @@
+node_modules/
+.DS_Store
+# Clip folders made by the tools/ scripts (upload them, don't commit them)
+naija-sounds/
+naija-sounds-test/
+apk/
